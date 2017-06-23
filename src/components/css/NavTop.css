@@ -1,0 +1,38 @@
+.NavTop {
+  text-align: left;
+  margin-top: 0px;
+}
+.NavTop nav{
+    height: 70px;
+    border-radius: 0px;
+}
+.NavTop .navbar-nav>li>a {
+    padding-top: 25px;
+    padding-bottom: 15px;
+    line-height: 25px;
+    font-size: 18px;
+}
+@media (max-width: 767px){
+    .navbar-default .navbar-collapse, .navbar-default .navbar-form{
+        z-index: 1;
+        position: relative;
+    }
+    .navbar-nav .open .dropdown-menu {
+        background-color: #d3d5d8 !important;
+    }
+    .Content{
+        min-height: 250px ;
+    }
+}
+@media (min-width: 767px){
+    .SideMenu {
+        margin-left:15px;
+    }
+    .Content{
+        margin-right:15px;
+        min-height: 400px ;
+    }
+}
+.navbar-default .navbar-nav>.open>a, .navbar-default .navbar-nav>.open>a:focus, .navbar-default .navbar-nav>.open>a:hover{
+    background-color: #4c5b71 !important;
+}

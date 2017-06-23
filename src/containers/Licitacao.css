@@ -1,0 +1,14 @@
+.form-control-static{
+    padding-top: 0px;
+}
+.form-group{
+    margin-bottom: 0px;
+}
+table > tbody > tr{
+    cursor: pointer;
+}
+@media (min-width: 768px){
+    .panel-default>.panel-heading{
+        height: 55px;
+    }
+}

@@ -1,0 +1,25 @@
+.Licitacoes form {
+    padding-bottom: 15px;
+}
+.Licitacoes form textarea {
+    height: 300px;
+    font-size: 24px;
+}
+.Objeto{
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+.page-header{
+    margin: 0px
+}
+table > tbody > tr{
+    cursor: pointer;
+}
+@media (min-width: 768px){
+    .panel-default>.panel-heading{
+        height: 55px;
+    }
+}
+.ReactTable .rt-tr{
+    cursor: pointer;
+}

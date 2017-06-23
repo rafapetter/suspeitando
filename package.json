@@ -1,0 +1,25 @@
+{
+  "name": "specula-front",
+  "version": "0.1.0",
+  "private": true,
+  "dependencies": {
+    "aws-sdk": "^2.75.0",
+    "react": "^15.6.1",
+    "react-bootstrap": "^0.31.0",
+    "react-dom": "^15.6.1",
+    "react-router-dom": "^4.1.1",
+    "react-table": "^6.4.0"
+  },
+  "devDependencies": {
+    "react-scripts": "1.0.7"
+  },
+  "scripts": {
+    "start": "react-scripts start",
+    "build": "react-scripts build",
+    "test": "react-scripts test --env=jsdom",
+    "eject": "react-scripts eject",
+    "predeploy": "npm run build",
+    "deploy": "aws s3 sync build/ s3://specula",
+    "postdeploy": "aws cloudfront create-invalidation --distribution-id E35358XSB3G4DU --paths '/*'"
+  }
+}
