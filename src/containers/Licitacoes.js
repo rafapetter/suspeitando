@@ -36,7 +36,6 @@ class Licitacoes extends Component {
             for (var i in results){
                 if (results[i].contract_id) {
                     results[i].contract_id = parseInt(results[i].contract_id, 10);
-                    console.log(typeof results[i].contract_id)
                 }
             }
             this.setState({ lics: results });
