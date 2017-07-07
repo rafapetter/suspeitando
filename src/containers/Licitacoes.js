@@ -15,7 +15,7 @@ class Licitacoes extends Component {
         this.state = {
             isLoading: false,
             filtro: {
-                ano_assinatura: 2017,
+                periodo_assinatura: 2017.1,
                 orgao: null,
                 evento: null,
                 suspeito: false,
@@ -43,15 +43,20 @@ class Licitacoes extends Component {
     async handleFiltrar(){
         this.setState({ isLoading: true, lics: null });
         try {
+            var periodo_assinatura = parseFloat(this.state.filtro.periodo_assinatura);
+            var periodo_assinatura_ano = parseInt(periodo_assinatura, 10);
+            var periodo_assinatura_mes = (periodo_assinatura % 1).toFixed(1) * 30
+            var periodo_assinatura_dia = 30;
+            if (periodo_assinatura_mes === 3 || periodo_assinatura_mes === 12) periodo_assinatura_dia = 31
             var query = {
                 LastEvaluatedKey: null,
-                ano_assinatura_inicio: (new Date(parseInt(this.state.filtro.ano_assinatura, 10), 0, 1)).getTime(),
-                ano_assinatura_fim: (new Date(parseInt(this.state.filtro.ano_assinatura, 10) + 1, 0, 1)).getTime(),
+                periodo_assinatura_inicio: (new Date(periodo_assinatura_ano, periodo_assinatura_mes - 3, 1)).getTime(),
+                periodo_assinatura_fim: (new Date(periodo_assinatura_ano, periodo_assinatura_mes - 1, periodo_assinatura_dia)).getTime(),
                 orgao: this.state.filtro.orgao,
                 suspeito: this.state.filtro.suspeito,
                 evento: this.state.filtro.evento
             }
-            //console.log(this.state.filtro.ano_assinatura, query)
+            //console.log(periodo_assinatura_ano, periodo_assinatura_mes, periodo_assinatura_dia, query)
             //this.setState({ isLoading: false });
             //return;
             const results = await this.getRecords(query);
@@ -63,7 +68,7 @@ class Licitacoes extends Component {
                 const results2 = await this.getRecords(query);
                 LastEvaluatedKey = results2.LastEvaluatedKey;
                 resultx = resultx.concat(results2.Items)
-                console.log(LastEvaluatedKey, results2.Items.length, resultx.length)
+                //console.log(LastEvaluatedKey, results2.Items.length, resultx.length)
             }
             this.setState({ lics: resultx });
         }
@@ -117,7 +122,7 @@ class Licitacoes extends Component {
         return options;
     }
     validateFiltro() {
-        if (!this.state.filtro.ano_assinatura) return false;
+        if (!this.state.filtro.periodo_assinatura) return false;
         return true;
     }
     GetFormattedDate(dtx) {
@@ -204,14 +209,17 @@ class Licitacoes extends Component {
         return (
         <div className="Licitacoes">
             <Panel header={breadcrumb}>
-                <FormGroup controlId="ano_assinatura" className="col-sm-2">
-                    <ControlLabel>Ano</ControlLabel>
+                <FormGroup controlId="periodo_assinatura" className="col-sm-3">
+                    <ControlLabel>Período</ControlLabel>
                     <FormControl
                         onChange={this.handleChangeFiltro}
-                        value={this.state.filtro.ano_assinatura || ''}
+                        value={this.state.filtro.periodo_assinatura || ''}
                         componentClass="select">
-                        <option value={2017}>2017</option>
-                        <option value={2016}>2016</option>
+                        <option value={2017.1}>2017 - 1° Trimestre</option>
+                        <option value={2016.4}>2016 - 4° Trimestre</option>
+                        <option value={2016.3}>2016 - 3° Trimestre</option>
+                        <option value={2016.2}>2016 - 2° Trimestre</option>
+                        <option value={2016.1}>2016 - 1° Trimestre</option>
                     </FormControl>
                 </FormGroup>
                 <FormGroup controlId="orgao" className="col-sm-3">

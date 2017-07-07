@@ -118,6 +118,30 @@ class Analises extends Component {
     render() {
         return (
             <div className="Analises">
+                <Panel>
+                    <div className="col-xs-12">
+                        <p>
+                            Bem vindo ao <b>Suspeitando</b>, aqui realizamos análises dos dados disponíveis
+                            pelo portal da transparência do município de São Paulo com o intuito de investigar
+                            contratos de licitações fechados com diversos fornecedores. Durante a investigação
+                            as suspeitas que temos vão desde contratos superfaturados a má qualidade na definição
+                            das licitações e serviços prestados.
+                        </p>
+                        <p>
+                            Este iniciativa é aberta, códigos e análises são open-source e estão disponíveis
+                            no <a href="https://github.com/rafapetter/suspeitando" rel="noopener noreferrer" target="_blank">GitHub</a>.
+                            Queremos que outras pessoas no Brasil, independente da região ou município,
+                            possam fazer parte dessa iniciativa. Existem várias suspeitas sobre a forma como a
+                            administração de municípios é conduzida, e os valores são grandes o suficiente para
+                            afetar a vida de boa parte da população.
+                        </p>
+                        <p>
+                            Por enquanto as análises são referentes aos contratos mais recentes, 2016 e 2017. Estaremos
+                            acrescentando mais análises em breve. Se quiser falar conosco, envie email para
+                            <b> opa@suspeitando.com</b>
+                        </p>
+                    </div>
+                </Panel>
                 <Panel className="Resultados" header={'Suspeitômetro'}>
                     <div className="col-xs-10">
                         <span className="Currency">R$</span>
@@ -126,16 +150,29 @@ class Analises extends Component {
                     <div className="col-xs-2">
                         <img className="Emoji" src={screaming_emoji} alt="OMG"/>
                     </div>
+                    <div className="col-sm-12">
+                        <p>
+                            Valor referente a soma de todos os contratos suspeitos que encontramos no período entre 2016 e 2017.
+                        </p>
+                        <p>
+                            A definição de "suspeito" aqui é: contratos onde o valor é 20% acima de outros contratos que tinham
+                            no mínimo 95% de similaridade. E a definição de "similaridade" foi feita através de um modelo de
+                            inteligência artificial, que identifica similaridade semântica na descrição do Objeto do contrato,
+                            e do valor médio por dia baseado no período de vigência do contrato. Todos os valores comparados em
+                            datas diferentes foram ajustados considerando um taxa de inflação de 15% ao ano.
+
+                        </p>
+                    </div>
                 </Panel>
-                <Panel className="Resultados" header={'Orgãos Mais Suspeitos'}>
+                <Panel className="Resultados" header={'Orgãos Mais Suspeitos (2016 e 2017)'}>
                     <span>{this.state.isLoading ? 'Carregando...' : null}</span>
                     {this.OrgaosMaisSuspeitos()}
                 </Panel>
-                <Panel className="Resultados" header={'Orgãos com Mais Aditivos (Baixa Qualidade)'}>
+                <Panel className="Resultados" header={'Orgãos com Mais Aditivos - Baixa Qualidade  (2016 e 2017)'}>
                     <span>{this.state.isLoading ? 'Carregando...' : null}</span>
                     {this.OrgaosPiorQualidade()}
                 </Panel>
-                <Panel className="Resultados" header={'Fornecedores Mais Suspeitos'}>
+                <Panel className="Resultados" header={'Fornecedores Mais Suspeitos (2016 e 2017)'}>
                     <span>{this.state.isLoading ? 'Carregando...' : null}</span>
                     {this.FornecedoresMaisSuspeitos()}
                 </Panel>

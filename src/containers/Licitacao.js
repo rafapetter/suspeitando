@@ -144,7 +144,7 @@ class Licitacao extends Component {
                     <FormGroup className="col-sm-6">
                         <ControlLabel>Valor (R$)</ControlLabel>
                         <FormControl.Static>
-                            {this.state.lic.valor ? this.state.formatReal(this.state.lic.valor) : null}
+                            {this.state.lic.valor ? this.formatReal(this.state.lic.valor) : null}
                         </FormControl.Static>
                     </FormGroup>
                     <FormGroup className="col-sm-6">
@@ -195,8 +195,8 @@ class Licitacao extends Component {
                         <tr key={i} onClick={this.handleNavLink} href={'/licitacoes/'+sim.contrato_id} style={this.state.lic.id_suspeito === sim.contrato_id ? {background: '#fdbdbd'} : null}>
                             <td>{sim.contrato_id}</td>
                             <td className="LimitText">{sim.objeto}</td>
-                            <td>{sim.validade_dias ? sim.validade_dias.toFixed(0) : null}</td>
-                            <td>{sim.valor_f ? this.formatReal(sim.valor_f) : null}</td>
+                            <td>{sim.validade ? sim.validade.toFixed(0) : null}</td>
+                            <td>{sim.valor ? this.formatReal(sim.valor) : null}</td>
                             <td>{sim.valor_dia ? this.formatReal(sim.valor_dia) : null}</td>
                             <td>{(parseFloat(sim.similar) * 100).toFixed(0)}%</td>
                             <td>{sim.taxa_corrigida > 0 ? (sim.taxa_corrigida * 100).toFixed(0) + '%' : null}</td>
