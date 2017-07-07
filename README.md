@@ -12,6 +12,6 @@ Encontramos aproximadamente R$ 3,8 bilhões referente apenas a soma do valor adi
 
 A definição de "**suspeito**" aqui é: contratos onde o valor é 20% acima de outros contratos que tinham no mínimo 95% de similaridade. E a definição de "**similaridade**" foi feita através de um modelo de rede neural, que identifica similaridade semântica na descrição do Objeto do contrato, e do valor médio por dia baseado no período de vigência do contrato. Todos os valores comparados em datas diferentes foram ajustados considerando um taxa de inflação de 15% ao ano.
 
-Para mais detalhes sobre como realizamos a analise inicial dos dados, acesse: **[link](/modelo/Licitacoes_Modelo.ipynb)**
+Para mais detalhes sobre como realizamos a analise inicial dos dados, acesse: **[link](/analise/licitacoes.ipynb)**
 
-E para entender como processamos estes dados e treinamos uma rede neural para identificar similaridades, acesse: **[link](/analise/licitacoes.ipynb)**
+E para entender como processamos estes dados e treinamos uma rede neural para identificar similaridades, acesse: **[link](/modelo/Licitacoes_Modelo.ipynb)**
