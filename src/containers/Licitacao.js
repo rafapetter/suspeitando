@@ -144,7 +144,7 @@ class Licitacao extends Component {
                     <FormGroup className="col-sm-6">
                         <ControlLabel>Valor (R$)</ControlLabel>
                         <FormControl.Static>
-                            {this.state.lic.valor}
+                            {this.state.lic.valor ? this.state.formatReal(this.state.lic.valor) : null}
                         </FormControl.Static>
                     </FormGroup>
                     <FormGroup className="col-sm-6">
