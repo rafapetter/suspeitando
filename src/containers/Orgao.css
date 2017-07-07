@@ -1,0 +1,29 @@
+.form-control-static{
+    padding-top: 0px;
+}
+.form-group{
+    margin-bottom: 0px;
+}
+table > tbody > tr{
+    cursor: pointer;
+}
+@media (min-width: 768px){
+    .panel-default>.panel-heading{
+        height: 55px;
+    }
+}
+.Orgao .LimitText{
+    overflow: hidden;
+   text-overflow: ellipsis;
+   display: -webkit-box;
+   -webkit-box-orient: vertical;
+   -webkit-line-clamp: 3; /* number of lines to show */
+   line-height: 18px;        /* fallback */
+   max-height: 100px;
+   max-width: 350px;
+}
+.Orgao .Resultados .panel-heading{
+    padding-left: 32px !important;
+    padding-top: 17px !important;
+    font-size: 16px;
+}

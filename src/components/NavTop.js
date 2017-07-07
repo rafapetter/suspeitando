@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import {withRouter} from 'react-router-dom';
-import { Navbar, Nav, NavDropdown, MenuItem} from 'react-bootstrap';
+import { Navbar, Nav, NavItem} from 'react-bootstrap';
 import './css/NavTop.css';
 import LogoImg2 from '../assets/img/logo.svg';
 
@@ -23,12 +23,7 @@ class NavTop extends Component {
                     </Navbar.Header>
                     <Navbar.Collapse>
                         <Nav pullRight>
-                            <NavDropdown eventKey={1} title="Username" id="basic-nav-dropdown">
-                                <MenuItem eventKey={1.1}>Account</MenuItem>
-                                <MenuItem eventKey={1.2}>Settings</MenuItem>
-                                <MenuItem divider />
-                                <MenuItem eventKey={1.3} onClick={this.props.handleLogout}>Logout</MenuItem>
-                            </NavDropdown>
+                            <NavItem eventKey={1} onClick={this.handleNavLink} href="/equipe">Equipe</NavItem>
                         </Nav>
                     </Navbar.Collapse>
                 </Navbar>

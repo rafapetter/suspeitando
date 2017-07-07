@@ -1,0 +1,52 @@
+.Analises form {
+    padding-bottom: 15px;
+}
+.Analises form textarea {
+    height: 300px;
+    font-size: 24px;
+}
+.Analises .Resultados .panel-heading{
+    padding-left: 32px !important;
+    padding-top: 17px !important;
+    font-size: 16px;
+}
+.Analises .Resultados .Suspeitometro{
+    font-size: 50px;
+}
+.Analises .Objeto{
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+.Analises .page-header{
+    margin: 0px
+}
+table > tbody > tr{
+    cursor: pointer;
+}
+@media (min-width: 768px){
+    .panel-default>.panel-heading{
+        height: 55px;
+    }
+}
+.ReactTable .rt-tr{
+    cursor: pointer;
+}
+
+.Analises .Suspeito div > label > input{
+    font-size: 200%;
+}
+.Analises .Currency{
+    font-size: 2.5vw;
+    color: #f9a79d;
+    text-align: right;
+    padding-top: 35px;
+    padding-right: 2%;
+}
+.Analises .Timer{
+    font-size: 5.5vw;
+    color: #fb7665;
+    font-weight: 900;
+}
+.Analises .Emoji{
+    height: 7vw;
+}

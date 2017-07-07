@@ -1,0 +1,34 @@
+.Fornecedores form {
+    padding-bottom: 15px;
+}
+.Fornecedores form textarea {
+    height: 300px;
+    font-size: 24px;
+}
+.Fornecedores .Resultados .panel-heading{
+    padding-left: 32px !important;
+    padding-top: 17px !important;
+    font-size: 16px;
+}
+.Fornecedores .Objeto{
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+.Fornecedores .page-header{
+    margin: 0px
+}
+table > tbody > tr{
+    cursor: pointer;
+}
+@media (min-width: 768px){
+    .panel-default>.panel-heading{
+        height: 55px;
+    }
+}
+.ReactTable .rt-tr{
+    cursor: pointer;
+}
+
+.Fornecedores .Suspeito div > label > input{
+    font-size: 200%;
+}

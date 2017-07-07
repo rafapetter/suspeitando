@@ -14,9 +14,9 @@ class Licitacao extends Component {
         };
     }
     compare(b,a) {
-        if (a.sim < b.sim)
+        if (a.similar < b.similar)
             return -1;
-        if (a.sim > b.sim)
+        if (a.similar > b.similar)
             return 1;
         return 0;
     }
@@ -26,9 +26,11 @@ class Licitacao extends Component {
             const result = await this.getRecord();
             if (result.sims){
                 for (var i in result.sims){
-                    for (var j in result.sim){
-                        if (String(result.sim[j].id) === String(result.sims[i].contract_id)){
-                            result.sims[i].sim = result.sim[j].sim;
+                    for (var j in result.similar){
+                        if (String(result.similar[j].id) === String(result.sims[i].contrato_id)){
+                            result.sims[i].similar = result.similar[j].similar;
+                            result.sims[i].taxa_corrigida = result.similar[j].taxa_corrigida;
+                            result.sims[i].valor_dia = result.similar[j].valor_dia;
                         }
                     }
                 }
@@ -42,7 +44,7 @@ class Licitacao extends Component {
         this.setState({ isLoading: false });
     }
     getRecord() {
-        return invokeApig({ path: '/contracts/' + this.props.match.params.id }, null);
+        return invokeApig({ path: '/contratos/' + this.props.match.params.id }, null);
     }
     handleNavLink = (event) => {
         event.preventDefault();
@@ -50,6 +52,18 @@ class Licitacao extends Component {
     }
     async componentWillReceiveProps(nextProps){
 
+    }
+    formatReal(n){
+        return n.toFixed(2).replace('.', ',').replace(/(\d)(?=(\d{3})+,)/g, "$1.");
+    }
+    GetFormattedDate(dtx) {
+        var month = this.str_pad(dtx.getMonth() + 1);
+        var day = this.str_pad(dtx.getDate());
+        var year = this.str_pad(dtx.getFullYear());
+        return day + "/" + month + "/" + year;
+    }
+    str_pad(n) {
+        return String("00" + n).slice(-2);
     }
     render() {
         const breadcrumb = (
@@ -59,44 +73,48 @@ class Licitacao extends Component {
                         Licitações
                     </Breadcrumb.Item>
                     <Breadcrumb.Item active>
-                        {'Número Contrato: ' + (this.state.lic.NúmeroContrato ? this.state.lic.NúmeroContrato : '')}
+                        {'Número Contrato: ' + (this.state.lic.numero_contrato ? this.state.lic.numero_contrato : '')}
                     </Breadcrumb.Item>
                 </Breadcrumb>
             </div>
         );
         return (
-        <div className="lic">
+        <div className="Licitacao">
             <Panel header={breadcrumb}>
                 {this.state.lic && (
                     <div>
                     <FormGroup className="col-sm-6">
                         <ControlLabel>Orgão</ControlLabel>
                         <FormControl.Static>
-                            {this.state.lic.Orgao}
+                            <a onClick={this.handleNavLink} href={'/orgaos/'+this.state.lic.orgao_id}>
+                                {this.state.lic.orgao}
+                            </a>
                         </FormControl.Static>
                     </FormGroup>
                     <FormGroup className="col-sm-6">
                         <ControlLabel>Modalidade</ControlLabel>
                         <FormControl.Static>
-                            {this.state.lic.Modalidade}
+                            {this.state.lic.modalidade}
                         </FormControl.Static>
                     </FormGroup>
                     <FormGroup className="col-sm-12">
                         <ControlLabel>Fornecedor</ControlLabel>
                         <FormControl.Static>
-                            {this.state.lic.Fornecedor}
+                            <a onClick={this.handleNavLink} href={'/fornecedores/'+this.state.lic.fornecedor_doc}>
+                                {this.state.lic.fornecedor}
+                            </a>
                         </FormControl.Static>
                     </FormGroup>
                     <FormGroup className="col-sm-6">
                         <ControlLabel>Fornecedor Documento</ControlLabel>
                         <FormControl.Static>
-                            {this.state.lic.FornecedorTipo} - {this.state.lic.FornecedorDocumento}
+                            {this.state.lic.fornecedor_tipo} - {this.state.lic.fornecedor_doc}
                         </FormControl.Static>
                     </FormGroup>
                     <FormGroup className="col-sm-6">
-                        <ControlLabel>Número Licitação</ControlLabel>
+                        <ControlLabel>Evento</ControlLabel>
                         <FormControl.Static>
-                            {this.state.lic.Número_Licitação}
+                            {this.state.lic.evento}
                         </FormControl.Static>
                     </FormGroup>
                     <FormGroup className="col-sm-12">
@@ -106,64 +124,82 @@ class Licitacao extends Component {
                         </FormControl.Static>
                     </FormGroup>
                     <FormGroup className="col-sm-6">
-                        <ControlLabel>Data Publicação Extrato</ControlLabel>
+                        <ControlLabel>Data Publicação</ControlLabel>
                         <FormControl.Static>
-                            {this.state.lic.DataPublicaçãoExtrato}
+                            {this.state.lic.data_publicacao}
                         </FormControl.Static>
                     </FormGroup>
                     <FormGroup className="col-sm-6">
-                        <ControlLabel>Data Assinatura Extrato</ControlLabel>
+                        <ControlLabel>Data Assinatura</ControlLabel>
                         <FormControl.Static>
-                            {this.state.lic.DataAssinaturaExtrato}
+                            {this.state.lic.data_assinatura_s}
                         </FormControl.Static>
                     </FormGroup>
                     <FormGroup className="col-sm-6">
-                        <ControlLabel>Validade Extrato</ControlLabel>
+                        <ControlLabel>Validade (dias)</ControlLabel>
                         <FormControl.Static>
-                            {this.state.lic.ValidadeExtrato ? this.state.lic.ValidadeExtrato.replace('.0','') : null} {this.state.lic.TipoValidadeExtrato}
+                            {this.state.lic.validade}
                         </FormControl.Static>
                     </FormGroup>
                     <FormGroup className="col-sm-6">
-                        <ControlLabel>Valor Contrato</ControlLabel>
+                        <ControlLabel>Valor (R$)</ControlLabel>
                         <FormControl.Static>
-                            {this.state.lic.ValorContrato}
+                            {this.state.lic.valor}
+                        </FormControl.Static>
+                    </FormGroup>
+                    <FormGroup className="col-sm-6">
+                        <ControlLabel>Número do Processo</ControlLabel>
+                        <FormControl.Static>
+                            {this.state.lic.numero_processo}
+                        </FormControl.Static>
+                    </FormGroup>
+                    <FormGroup className="col-sm-6">
+                        <ControlLabel>Número da Licitação</ControlLabel>
+                        <FormControl.Static>
+                            {this.state.lic.numero_licitacao}
                         </FormControl.Static>
                     </FormGroup>
                     <FormGroup className="col-sm-6">
                         <ControlLabel>Retranca</ControlLabel>
                         <FormControl.Static>
-                            {this.state.lic.Retranca}
+                            {this.state.lic.retranca}
                         </FormControl.Static>
                     </FormGroup>
+                    {this.state.lic.id_suspeito && (
+                        <FormGroup className="col-sm-6" style={{background: '#fdbdbd'}}>
+                            <ControlLabel>Suspeito - Valor Adicional (R$)</ControlLabel>
+                            <FormControl.Static>
+                                {this.formatReal(this.state.lic.valor_suspeito)}
+                            </FormControl.Static>
+                        </FormGroup>
+                    )}
                     </div>
                 )}
             </Panel>
             {this.state.lic.sims && (
-            <Panel header={'Contratos Relacionados: ' + this.state.lic.sims.length}>
+            <Panel className="Resultados" header={'Contratos Similares: ' + this.state.lic.sims.length}>
                 <Table responsive>
                     <thead>
                         <tr>
                             <th>ID</th>
-                            <th>Orgão</th>
-                            <th>Fornecedor</th>
                             <th>Objeto</th>
-                            <th>Data Assinatura</th>
-                            <th>Validade</th>
-                            <th>Valor (R$)</th>
+                            <th>Validade (dias)</th>
+                            <th>Valor Total (R$)</th>
+                            <th>Valor por Dia (R$)</th>
                             <th>Similaridade</th>
+                            <th>Variação de Valor</th>
                         </tr>
                     </thead>
                     <tbody>
                     {this.state.lic.sims.map((sim, i) => (
-                        <tr key={i} onClick={this.handleNavLink} href={'/licitacoes/'+sim.contract_id}>
-                            <td>{sim.contract_id}</td>
-                            <td>{sim.Orgao}</td>
-                            <td>{sim.Fornecedor}</td>
-                            <td>{sim.objeto}</td>
-                            <td>{sim.DataAssinaturaExtrato}</td>
-                            <td>{sim.ValidadeExtrato ? sim.ValidadeExtrato.replace('.0','') : null} {sim.TipoValidadeExtrato}</td>
-                            <td>{sim.ValorContrato}</td>
-                            <td>{(parseFloat(sim.sim) * 100).toFixed(2)}%</td>
+                        <tr key={i} onClick={this.handleNavLink} href={'/licitacoes/'+sim.contrato_id} style={this.state.lic.id_suspeito === sim.contrato_id ? {background: '#fdbdbd'} : null}>
+                            <td>{sim.contrato_id}</td>
+                            <td className="LimitText">{sim.objeto}</td>
+                            <td>{sim.validade_dias ? sim.validade_dias.toFixed(0) : null}</td>
+                            <td>{sim.valor_f ? this.formatReal(sim.valor_f) : null}</td>
+                            <td>{sim.valor_dia ? this.formatReal(sim.valor_dia) : null}</td>
+                            <td>{(parseFloat(sim.similar) * 100).toFixed(0)}%</td>
+                            <td>{sim.taxa_corrigida > 0 ? (sim.taxa_corrigida * 100).toFixed(0) + '%' : null}</td>
                         </tr>
                     ))}
                     </tbody>

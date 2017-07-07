@@ -1,0 +1,34 @@
+.Orgaos form {
+    padding-bottom: 15px;
+}
+.Orgaos form textarea {
+    height: 300px;
+    font-size: 24px;
+}
+.Orgaos .Resultados .panel-heading{
+    padding-left: 32px !important;
+    padding-top: 17px !important;
+    font-size: 16px;
+}
+.Orgaos .Objeto{
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+.Orgaos .page-header{
+    margin: 0px
+}
+table > tbody > tr{
+    cursor: pointer;
+}
+@media (min-width: 768px){
+    .panel-default>.panel-heading{
+        height: 55px;
+    }
+}
+.ReactTable .rt-tr{
+    cursor: pointer;
+}
+
+.Orgaos .Suspeito div > label > input{
+    font-size: 200%;
+}

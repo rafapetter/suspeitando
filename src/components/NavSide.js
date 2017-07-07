@@ -11,23 +11,28 @@ class NavSide extends Component {
     render() {
         var activeHref;
         if (this.props.location.pathname){
-            if (this.props.location.pathname.startsWith('/licitacoes/')){
+            if (this.props.location.pathname.startsWith('/analises/')){
+                activeHref = '/analises/';
+            }
+            else if (this.props.location.pathname.startsWith('/licitacoes/')){
                 activeHref = '/licitacoes/';
             }
-            else if (this.props.location.pathname.startsWith('/empresas/')){
-                activeHref = '/empresas/';
+            else if (this.props.location.pathname.startsWith('/fornecedores/')){
+                activeHref = '/fornecedores/';
             }
-            else if (this.props.location.pathname.startsWith('/dashboard/')){
-                activeHref = '/dashboard/';
+            else if (this.props.location.pathname.startsWith('/orgaos/')){
+                activeHref = '/orgaos/';
             }
+
         }
         return (
             <div className="NavSide">
                 <Panel className="SideMenu" header="">
                     <Nav bsStyle="pills" stacked activeHref={activeHref}>
-                        <RouteNavItem onClick={this.handleNavLink} href={'/dashboard/'}>Dashboard</RouteNavItem>
+                        <RouteNavItem onClick={this.handleNavLink} href={'/analises/'}>Análises</RouteNavItem>
                         <RouteNavItem onClick={this.handleNavLink} href={'/licitacoes/'}>Licitações</RouteNavItem>
-                        <RouteNavItem onClick={this.handleNavLink} href={'/empresas/'}>Empresas</RouteNavItem>
+                        <RouteNavItem onClick={this.handleNavLink} href={'/fornecedores/'}>Fornecedores</RouteNavItem>
+                        <RouteNavItem onClick={this.handleNavLink} href={'/orgaos/'}>Orgãos</RouteNavItem>
                     </Nav>
                 </Panel>
             </div>
