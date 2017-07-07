@@ -128,11 +128,11 @@ class Analises extends Component {
                             das licitações e serviços prestados.
                         </p>
                         <p>
-                            Este iniciativa é aberta, códigos e análises são open-source e estão disponíveis
+                            Este iniciativa é <b>aberta</b>, códigos e análises são open-source e estão disponíveis
                             no <a href="https://github.com/rafapetter/suspeitando" rel="noopener noreferrer" target="_blank">GitHub</a>.
                             Queremos que outras pessoas no Brasil, independente da região ou município,
                             possam fazer parte dessa iniciativa. Existem várias suspeitas sobre a forma como a
-                            administração de municípios é conduzida, e os valores são grandes o suficiente para
+                            administração dos municípios é conduzida, e os valores são grandes o suficiente para
                             afetar a vida de boa parte da população.
                         </p>
                         <p>
@@ -143,20 +143,23 @@ class Analises extends Component {
                     </div>
                 </Panel>
                 <Panel className="Resultados" header={'Suspeitômetro'}>
-                    <div className="col-xs-10">
-                        <span className="Currency">R$</span>
-                        <span className="Timer">{this.state.suspeitometro ? this.formatReal(this.state.suspeitometro) : null}</span>
-                    </div>
-                    <div className="col-xs-2">
-                        <img className="Emoji" src={screaming_emoji} alt="OMG"/>
+                    <div className="col-xs-12">
+                        <div className="col-xs-10">
+                            <span className="Currency">R$</span>
+                            <span className="Timer">{this.state.suspeitometro ? this.formatReal(this.state.suspeitometro) : null}</span>
+                        </div>
+                        <div className="col-xs-2">
+                            <img className="Emoji" src={screaming_emoji} alt="OMG"/>
+                        </div>
                     </div>
                     <div className="col-sm-12">
                         <p>
-                            Valor referente a soma de todos os contratos suspeitos que encontramos no período entre 2016 e 2017.
+                            São aproximadamente R$ 3,8 bilhões referente apenas a soma do <b> valor adicional suspeito </b>
+                            de todos os contratos suspeitos que encontramos no período entre 2016 e 2017.
                         </p>
                         <p>
-                            A definição de "suspeito" aqui é: contratos onde o valor é 20% acima de outros contratos que tinham
-                            no mínimo 95% de similaridade. E a definição de "similaridade" foi feita através de um modelo de
+                            A definição de "<b>suspeito</b>" aqui é: contratos onde o valor é 20% acima de outros contratos que tinham
+                            no mínimo 95% de similaridade. E a definição de "<b>similaridade</b>" foi feita através de um modelo de
                             inteligência artificial, que identifica similaridade semântica na descrição do Objeto do contrato,
                             e do valor médio por dia baseado no período de vigência do contrato. Todos os valores comparados em
                             datas diferentes foram ajustados considerando um taxa de inflação de 15% ao ano.
@@ -168,7 +171,7 @@ class Analises extends Component {
                     <span>{this.state.isLoading ? 'Carregando...' : null}</span>
                     {this.OrgaosMaisSuspeitos()}
                 </Panel>
-                <Panel className="Resultados" header={'Orgãos com Mais Aditivos - Baixa Qualidade  (2016 e 2017)'}>
+                <Panel className="Resultados" header={'Orgãos com Mais Aditivos (2016 e 2017)'}>
                     <span>{this.state.isLoading ? 'Carregando...' : null}</span>
                     {this.OrgaosPiorQualidade()}
                 </Panel>

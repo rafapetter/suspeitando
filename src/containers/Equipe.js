@@ -66,7 +66,7 @@ class Equipe extends Component {
                     <div className="Name col-sm-8 col-xs-7">
                         <b>Patrick Ens</b><br/>
                         <div style={{paddingTop:'7px'}}>
-                            <a href="" rel="noopener noreferrer" target="_blank">
+                            <a href="https://github.com/patrickhacens" rel="noopener noreferrer" target="_blank">
                                 <img src={GitLogo} alt="GitLogo" style={{height:"20px"}}/>
                             </a>
                             <a href="https://br.linkedin.com/in/patrickens" rel="noopener noreferrer" target="_blank" style={{marginLeft: '15px'}}>

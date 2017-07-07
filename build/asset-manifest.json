@@ -1,10 +1,10 @@
 {
   "main.css": "static/css/main.040c60b4.css",
   "main.css.map": "static/css/main.040c60b4.css.map",
-  "main.js": "static/js/main.6b13b94b.js",
-  "main.js.map": "static/js/main.6b13b94b.js.map",
-  "static/js/0.c031f926.chunk.js": "static/js/0.c031f926.chunk.js",
-  "static/js/0.c031f926.chunk.js.map": "static/js/0.c031f926.chunk.js.map",
+  "main.js": "static/js/main.43f06553.js",
+  "main.js.map": "static/js/main.43f06553.js.map",
+  "static/js/0.72474ad8.chunk.js": "static/js/0.72474ad8.chunk.js",
+  "static/js/0.72474ad8.chunk.js.map": "static/js/0.72474ad8.chunk.js.map",
   "static/js/1.2e0af82e.chunk.js": "static/js/1.2e0af82e.chunk.js",
   "static/js/1.2e0af82e.chunk.js.map": "static/js/1.2e0af82e.chunk.js.map",
   "static/js/2.6044c2cc.chunk.js": "static/js/2.6044c2cc.chunk.js",
@@ -17,8 +17,8 @@
   "static/js/5.9cf8d6ad.chunk.js.map": "static/js/5.9cf8d6ad.chunk.js.map",
   "static/js/6.28bf317d.chunk.js": "static/js/6.28bf317d.chunk.js",
   "static/js/6.28bf317d.chunk.js.map": "static/js/6.28bf317d.chunk.js.map",
-  "static/js/7.37050dc6.chunk.js": "static/js/7.37050dc6.chunk.js",
-  "static/js/7.37050dc6.chunk.js.map": "static/js/7.37050dc6.chunk.js.map",
+  "static/js/7.1e0e8b25.chunk.js": "static/js/7.1e0e8b25.chunk.js",
+  "static/js/7.1e0e8b25.chunk.js.map": "static/js/7.1e0e8b25.chunk.js.map",
   "static/js/8.24b0e15a.chunk.js": "static/js/8.24b0e15a.chunk.js",
   "static/js/8.24b0e15a.chunk.js.map": "static/js/8.24b0e15a.chunk.js.map",
   "static/js/9.10be680b.chunk.js": "static/js/9.10be680b.chunk.js",
@@ -28,6 +28,5 @@
   "static/media/glyphicons-halflings-regular.ttf": "static/media/glyphicons-halflings-regular.e18bbf61.ttf",
   "static/media/glyphicons-halflings-regular.woff": "static/media/glyphicons-halflings-regular.fa277232.woff",
   "static/media/glyphicons-halflings-regular.woff2": "static/media/glyphicons-halflings-regular.448c34a5.woff2",
-  "static/media/screaming_emoji.png": "static/media/screaming_emoji.869b9f7e.png",
-  "static/media/suspeitando_logo_3.png": "static/media/suspeitando_logo_3.4d167d32.png"
+  "static/media/screaming_emoji.png": "static/media/screaming_emoji.869b9f7e.png"
 }

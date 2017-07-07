@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import {withRouter} from 'react-router-dom';
 import { Navbar, Nav, NavItem } from 'react-bootstrap';
 import './css/NavTop.css';
-import LogoSuspeitando from '../assets/img/suspeitando_logo_3.png';
+import LogoSuspeitando from '../assets/img/suspeitando_logo_2.png';
 
 class NavTop extends Component {
     handleNavLink = (event) => {
